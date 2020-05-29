@@ -1,0 +1,63 @@
+<div class="container-fluid" style="margin-top: 100px; margin-left: 400px;">
+    <div class="row">
+        <img class="col-sm-12 col-md-7" src="../../assets/images/accolite_logo.jpg">
+    </div>
+    <div class="row">
+        
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <!-- <div class="panel-body">
+                    <h3>Log In</h3>
+                    
+                    <form class="form-horizontal" role="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="emailId">
+                                Email ID:
+                            </label>
+                            <div class="col-sm-8">
+                                <input
+                                id="emailId"
+                                type="email"
+                                class="form-control"
+                                formControlName="emailId"
+                                (input)="onChange()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="password">
+                                Password:
+                            </label>
+                            <div class="col-sm-8">
+                                <input
+                                id="password"
+                                type="password"
+                                class="form-control"
+                                formControlName="password"
+                                (input)="onChange()">
+                            </div>
+                            <br><label class="control-label text-danger">{{message}}</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+                <div class="panel-footer">
+                    <div class="form-group">
+                        
+                        <div class="google-btn" (click)="signInWithGoogle()">
+                            <div class="google-icon-wrapper">
+                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                            </div>
+                            <p class="btn-text"><b>Sign in with Google</b></p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
