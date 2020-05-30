@@ -11,29 +11,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  message=""
-  loginForm: FormGroup;
+  
   constructor(private authService: AuthService, private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      emailId: new FormControl(null,
-        [Validators.required,
-          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
-      ]),
-      password: new FormControl(null, Validators.required)
-    });
-
     
-  }
-
-  onSubmit() {
-    console.log(this.loginForm);
-    this.loginForm.reset();
-  }
-
-  onChange() {
-    this.message=""
   }
 
   signInWithGoogle() {

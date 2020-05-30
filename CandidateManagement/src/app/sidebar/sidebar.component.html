@@ -1,0 +1,17 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="/dashboard">Home</a>
+    <a href="/candidate/search">Candidate Management</a>
+    <a>Opportunity Management</a>
+    <a>Course Management</a>
+    <a>Assessment</a>
+    <a>Onboarding</a>
+</div>
+
+<div style="font-size:30px;cursor:pointer; background-color:indigo;">
+    <span style="color:white;margin-left:5px" (click)="openNav()">&#9776;</span>
+    <button class="btn btn-success" style="margin-left:1400px;" (click)="signOut()">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        Sign Out
+    </button>    
+</div>

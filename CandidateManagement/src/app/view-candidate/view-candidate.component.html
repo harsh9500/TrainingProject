@@ -1,0 +1,29 @@
+<app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
+
+<div class="container-fluid" style="margin-top: 10px;">
+    <h1 *ngIf="!candidates.length" style="text-align: center;">No Candidates!!</h1>
+    <table *ngIf="candidates.length" class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let candidate of candidates">
+            <th scope="row">{{candidate.id}}</th>
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.email}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteCandidate(candidate.id)">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

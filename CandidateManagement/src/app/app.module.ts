@@ -9,6 +9,13 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angul
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SearchCandidateComponent } from './search-candidate/search-candidate.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AddCandidateComponent } from './add-candidate/add-candidate.component';
+import { TrendsComponent } from './trends/trends.component';
+import { ViewCandidateComponent } from './view-candidate/view-candidate.component';
+
 
 
 const config = new AuthServiceConfig([
@@ -27,7 +34,13 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent,
+    SearchCandidateComponent,
+    NavbarComponent,
+    AddCandidateComponent,
+    TrendsComponent,
+    ViewCandidateComponent,
   ],
   imports: [
     BrowserModule,

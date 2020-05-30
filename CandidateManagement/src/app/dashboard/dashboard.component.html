@@ -1,17 +1,5 @@
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <a href="/dashboard">Home</a>
-    <a>Candidate Management</a>
-    <a>Opportunity Management</a>
-    <a>Course Management</a>
-    <a>Assessment</a>
-    <a>Onboarding</a>
-</div>
-
-<div style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</div>
-
-<div id="dashboard-content">
+<app-sidebar></app-sidebar>
+<div id="content">
     <p>dashboard works!</p>
     <p *ngIf="user">{{user.email}}</p>
-    <button class="btn btn-success" (click)="signOut()">Sign Out</button>
 </div>
