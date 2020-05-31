@@ -8,10 +8,12 @@
     <a>Onboarding</a>
 </div>
 
-<div style="font-size:30px;cursor:pointer; background-color:indigo;">
+<div style="font-size:30px; cursor:pointer; background-color:indigo;" class="stay-sticky">
     <span style="color:white;margin-left:5px" (click)="openNav()">&#9776;</span>
-    <button class="btn btn-success" style="margin-left:1400px;" (click)="signOut()">
-        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-        Sign Out
-    </button>    
+    <div style="float:right;">
+        <button class="btn btn-success" (click)="signOut()">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            Sign Out
+        </button>
+    </div> 
 </div>

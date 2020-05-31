@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Candidate } from '../candidate.model';
 
 @Component({
   selector: 'app-view-candidate',
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class ViewCandidateComponent implements OnInit {
 
-  candidates:Object[];
-  constructor(private backendService:BackendService) { }
+  candidates:Candidate[]=[];
+  constructor(private backendService:BackendService, private router:Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -24,11 +25,13 @@ export class ViewCandidateComponent implements OnInit {
   }
 
   deleteCandidate(id:number) {
-    this.backendService.deleteCandidate(id)
-    .subscribe(data=>{
-      console.log(data);
-      this.getData();
+    let confirmation=window.confirm("Are you sure you want to delete this candidate?");
+    if(confirmation) {
+      this.backendService.deleteCandidate(id).subscribe(()=>this.getData())
     }
-    )
+  }
+
+  viewDetailsCandidate(id:number) {
+    this.router.navigate(['candidate/details',id])
   }
 }

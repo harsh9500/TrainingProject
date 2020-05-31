@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { TrendsComponent } from './trends/trends.component';
 import { ViewCandidateComponent } from './view-candidate/view-candidate.component';
+import { UpdateCandidateComponent } from './update-candidate/update-candidate.component';
 
 
 
@@ -41,11 +42,13 @@ export function provideConfig() {
     AddCandidateComponent,
     TrendsComponent,
     ViewCandidateComponent,
+    UpdateCandidateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     SocialLoginModule,
   ],

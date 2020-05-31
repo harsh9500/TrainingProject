@@ -7,9 +7,9 @@
         <div class="col-sm-12 col-md-7">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>Add Candidate Details</h3>
+                    <h3>Details</h3>
                     
-                    <form class="form-horizontal" role="form" [formGroup]="addCandidateForm" (ngSubmit)="onSubmit()">
+                    <form class="form-horizontal" (ngSubmit)="onSubmit()">
                         
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="name">
@@ -20,8 +20,10 @@
                                 id="name"
                                 type="text"
                                 class="form-control"
-                                formControlName="name"
-                                >
+                                [(ngModel)]="candidate.name"
+                                name="name"
+                                readonly
+                                >                                
                             </div>
                         </div>
 
@@ -34,7 +36,9 @@
                                 id="emailId"
                                 type="email"
                                 class="form-control"
-                                formControlName="email"
+                                [(ngModel)]="candidate.email"
+                                name="email"
+                                readonly
                                 >
                             </div>
                         </div>
@@ -48,7 +52,9 @@
                                 id="institute"
                                 type="text"
                                 class="form-control"
-                                formControlName="institute"
+                                [(ngModel)]="candidate.institute"
+                                name="institute"
+                                readonly
                                 >
                             </div>
                         </div>
@@ -62,7 +68,9 @@
                                 id="contact"
                                 type="number"
                                 class="form-control"
-                                formControlName="contact"
+                                [(ngModel)]="candidate.contact"
+                                name="contact"
+                                readonly
                                 >
                             </div>
                         </div>
@@ -76,7 +84,10 @@
                                 id="description"
                                 type="text"
                                 class="form-control"
-                                formControlName="description"
+                                [(ngModel)]="candidate.description"
+                                name="description"
+                                minlength="2"
+                                maxlength="40"
                                 >
                             </div>
                         </div>
@@ -86,7 +97,10 @@
                                 Location:
                             </label>
                             <div class="col-sm-8">
-                                <select id="location" class="form-control" formControlName="location">
+                                <select id="location" class="form-control"
+                                [(ngModel)]="candidate.location"
+                                name="location"
+                                >
                                     <option value="Mumbai" selected>Mumbai</option>
                                     <option value="Bengaluru">Bengaluru</option>
                                     <option value="Chennai">Chennai</option>
@@ -106,7 +120,8 @@
                                 id="skills"
                                 type="text"
                                 class="form-control"
-                                formControlName="skills"
+                                [(ngModel)]="candidate.skills"
+                                name="skills"
                                 >
                             </div>
                         </div>
@@ -120,21 +135,19 @@
                                 type="date"
                                 class="form-control"
                                 id="joiningDate"
-                                formControlName="joiningDate">
+                                [(ngModel)]="candidate.joiningDate"
+                                name="joiningDate"
+                                >
                             </div>
                         </div>
 
-                        <label class="col-sm-12 text-danger" *ngIf="!addCandidateForm.valid" style="text-align: center;">
-                            You need to enter valid details in order to submit the form
-                        </label>
-                        <br><br *ngIf="!addCandidateForm.valid">
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" [disabled]="!addCandidateForm.valid" class="btn btn-success">Add</button>
-                                <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Reset</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </div>
                     </form>
+
                 </div>
                 
             </div>

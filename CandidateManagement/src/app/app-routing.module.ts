@@ -6,6 +6,7 @@ import { SearchCandidateComponent } from './search-candidate/search-candidate.co
 import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { TrendsComponent } from './trends/trends.component';
 import { ViewCandidateComponent } from './view-candidate/view-candidate.component';
+import { UpdateCandidateComponent } from './update-candidate/update-candidate.component';
 
 const routes: Routes = [{
   path:'login',
@@ -29,6 +30,10 @@ const routes: Routes = [{
 {
   path:'candidate/trends',
   component: TrendsComponent
+},
+{
+  path:'candidate/details/:id',
+  component: UpdateCandidateComponent
 },
 {
   path:'',

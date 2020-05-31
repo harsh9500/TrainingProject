@@ -5,14 +5,28 @@ public class Candidate {
 	private long id;
 	private String name;
 	private String email;
+	private String institute;
+	private long contact;
+	private String description;
+	private String location;
+	private String skills;
+	private String joiningDate;
+	
 	
 	public Candidate() {}
-	
-	public Candidate(long id, String name, String email) {
+
+	public Candidate(long id, String name, String email, String institute, long contact, String description,
+			String location, String skills, String joiningDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.institute = institute;
+		this.contact = contact;
+		this.description = description;
+		this.location = location;
+		this.skills = skills;
+		this.joiningDate = joiningDate;
 	}
 
 	public long getId() {
@@ -39,9 +53,57 @@ public class Candidate {
 		this.email = email;
 	}
 
+	public String getInstitute() {
+		return institute;
+	}
+
+	public void setInstitute(String institute) {
+		this.institute = institute;
+	}
+
+	public long getContact() {
+		return contact;
+	}
+
+	public void setContact(long contact) {
+		this.contact = contact;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getJoiningDate() {
+		return joiningDate;
+	}
+
+	public void setJoiningDate(String joiningDate) {
+		this.joiningDate = joiningDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Candidate [id=" + id + ", name=" + name + ", email=" + email + "]";
+	}
+
+	public String getSkills() {
+		return skills;
+	}
+
+	public void setSkills(String skills) {
+		this.skills = skills;
 	}
 	
 	

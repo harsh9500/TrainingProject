@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Candidate } from './candidate.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class BackendService {
   private baseUrl:string="http://localhost:8082/candidates";
   constructor(private http:HttpClient) {}
 
-  addCandidate(candidate:Object): Observable<any> {
+  addCandidate(candidate:Candidate): Observable<any> {
     return this.http.post(this.baseUrl,candidate);
   }
 
@@ -26,7 +27,8 @@ export class BackendService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  updateCandidate(id: number, candidate: any): Observable<any> {
+  updateCandidate(id: number, candidate: Candidate): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, candidate);
   }
+
 }

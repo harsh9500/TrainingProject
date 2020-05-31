@@ -16,6 +16,8 @@ import org.springframework.stereotype.Repository;
 
 import com.candidatemanagement.model.Candidate;
 import com.candidatemanagement.model.CandidateRowMapper;
+import com.candidatemanagement.model.Skill;
+import com.candidatemanagement.model.SkillRowMapper;
 
 @Repository
 public class CandidateDaoImpl implements CandidateDao {
@@ -48,7 +50,7 @@ public class CandidateDaoImpl implements CandidateDao {
     @Override
     public Boolean addCandidate(Candidate candidate) {
     	
-    	String query="insert into candidate (name,email) values(?,?)";
+    	String query="insert into candidate (name,email,institute,contact,description,location,skills,joiningDate) values(?,?,?,?,?,?,?,?)";
     	
     	return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
 
@@ -56,6 +58,12 @@ public class CandidateDaoImpl implements CandidateDao {
 			public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
 				ps.setString(1, candidate.getName());
 				ps.setString(2, candidate.getEmail());
+				ps.setString(3, candidate.getInstitute());
+				ps.setLong(4, candidate.getContact());
+				ps.setString(5, candidate.getDescription());
+				ps.setString(6, candidate.getLocation());
+				ps.setString(7, candidate.getSkills());
+				ps.setString(8, candidate.getJoiningDate());
 				return ps.execute();
 			}});
     	
@@ -63,14 +71,28 @@ public class CandidateDaoImpl implements CandidateDao {
 
     @Override
     public int updateCandidate(Candidate candidate, long id) {
-        int [] types= {Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
-    	return jdbcTemplate.update("update candidate " + " set name = ?, email = ? "+" where id = ?",
-            new Object[] {candidate.getName(), candidate.getEmail(), id},types);
+        int [] types= {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.LONGVARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
+    	return jdbcTemplate.update("update candidate " + " set name = ?, email = ?, institute=?, contact=?, description=?, location=?,skills=?, joiningDate=? "+" where id = ?",
+            new Object[] {
+            		candidate.getName(),
+            		candidate.getEmail(),
+            		candidate.getInstitute(),
+            		candidate.getContact(),
+            		candidate.getDescription(),
+            		candidate.getLocation(),
+            		candidate.getSkills(),
+            		candidate.getJoiningDate(),
+            		id},types);
     }
     
     @Override
     public int deleteCandidate(long id) {
         return jdbcTemplate.update("delete from candidate where id=?", id);
     }
+
+	@Override
+	public List<Skill> getAllSkills() {
+		return jdbcTemplate.query("select * from skill", new SkillRowMapper());
+	}
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.candidatemanagement.model.Candidate;
+import com.candidatemanagement.model.Skill;
 import com.candidatemanagement.service.CandidateService;
 import com.candidatemanagement.service.CandidateServiceImpl;
 
@@ -48,6 +49,11 @@ public class CandidateController {
 	@DeleteMapping("/candidates/{id}")
 	public ResponseEntity<?> deleteCandidate(@PathVariable long id) {
 		return candidateService.deleteCandidate(id);
+	}
+	
+	@GetMapping("/skills")
+	public List<Skill> getAllSkills() {
+		return candidateService.getAllSkills();
 	}
 	
 	

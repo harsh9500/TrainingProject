@@ -13,6 +13,12 @@ public class CandidateRowMapper implements RowMapper <Candidate> {
 		candidate.setId(rs.getLong("id"));
 		candidate.setName(rs.getString("name"));
 		candidate.setEmail(rs.getString("email"));
+		candidate.setInstitute(rs.getString("institute"));
+		candidate.setContact(rs.getLong("contact"));
+		candidate.setDescription(rs.getString("description"));
+		candidate.setLocation(rs.getString("location"));
+		candidate.setSkills(rs.getString("skills"));
+		candidate.setJoiningDate(rs.getString("joiningDate"));
 		return candidate;
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.candidatemanagement.dao.CandidateDao;
 import com.candidatemanagement.dao.CandidateDaoImpl;
 import com.candidatemanagement.model.Candidate;
+import com.candidatemanagement.model.Skill;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -65,6 +66,12 @@ public class CandidateServiceImpl implements CandidateService {
 		}
 		candidateDao.deleteCandidate(id);
 		return new ResponseEntity<Candidate>(HttpStatus.NO_CONTENT);
+	}
+
+
+	@Override
+	public List<Skill> getAllSkills() {
+		return candidateDao.getAllSkills();
 	}
 
 }

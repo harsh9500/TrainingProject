@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
+import { Candidate } from '../candidate.model';
 
 @Component({
   selector: 'app-add-candidate',
@@ -10,36 +11,61 @@ import { Router } from '@angular/router';
 })
 export class AddCandidateComponent implements OnInit {
 
+  candidate:Candidate;
   addCandidateForm: FormGroup;
-  message: String;
   constructor(private backendService:BackendService, private router:Router) { }
 
   ngOnInit(): void {
+
+    this.candidate=new Candidate();
+
     this.addCandidateForm = new FormGroup({
       name: new FormControl(null, [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(40),
+        Validators.pattern("^[A-Z a-z]+$")
       ]),
-      email: new FormControl(null,
-        [Validators.required,
-          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
-      ])
+      email: new FormControl(null,[
+        Validators.required,
+        Validators.email,
+      ]),
+      institute: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(40),
+        Validators.pattern("^[A-Z a-z]+$")
+      ]),
+      contact: new FormControl(null, [
+        Validators.required,
+        Validators.pattern("^[0-9]{10}$")
+      ]),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(40),
+        Validators.pattern("^[A-Z a-z]+$")
+      ]),
+      location: new FormControl("Mumbai",Validators.required),
+      joiningDate: new FormControl(null, [
+        Validators.required,
+      ]),
+      skills: new FormControl(null)
       
     });
   }
 
+
   onSubmit() {
+
+    this.candidate=this.addCandidateForm.value;
     console.log(this.addCandidateForm.value);
-    this.backendService.addCandidate(this.addCandidateForm.value)
+    this.backendService.addCandidate(this.candidate)
     .subscribe(()=>{
       this.router.navigateByUrl('/candidate/view');
       this
     });
   }
 
-  onChange() {
-    this.message=""
-  }
 
 }
