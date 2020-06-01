@@ -11,6 +11,7 @@ public class Candidate {
 	private String location;
 	private String skills;
 	private String joiningDate;
+	private String feedback;
 	
 	
 	public Candidate() {}
@@ -93,17 +94,25 @@ public class Candidate {
 		this.joiningDate = joiningDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Candidate [id=" + id + ", name=" + name + ", email=" + email + "]";
-	}
-
 	public String getSkills() {
 		return skills;
 	}
 
 	public void setSkills(String skills) {
 		this.skills = skills;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+	
+	@Override
+	public String toString() {
+		return "Candidate [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
 	
 	

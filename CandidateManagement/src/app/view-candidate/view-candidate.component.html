@@ -15,6 +15,7 @@
             <th scope="col">Location</th>
             <th scope="col">Skills</th>
             <th scope="col">Joining Date</th>
+            <th scope="col">Feedback</th>
             <th scope="col">Details</th>
             <th scope="col">Delete</th>
         </tr>
@@ -30,6 +31,7 @@
             <td>{{candidate.location}}</td>
             <td>{{candidate.skills}}</td>
             <td>{{candidate.joiningDate}}</td>
+            <td>{{candidate.feedback}}</td>
             <td>
                 <button class="btn btn-primary" (click)="viewDetailsCandidate(candidate.id)">
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
@@ -37,11 +39,28 @@
                 </button>
             </td>
             <td>
-                <button class="btn btn-danger" (click)="deleteCandidate(candidate.id)">
+                <button class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#'+candidate.id">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     Delete
                 </button>
             </td>
+            <div class="modal fade" id={{candidate.id}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h3 class="modal-title text-danger" id="myModalLabel">Warning!</h3>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Are you sure?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteCandidate(candidate.id)" data-dismiss="modal">Yes! Delete</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
         </tr>
         </tbody>
     </table>

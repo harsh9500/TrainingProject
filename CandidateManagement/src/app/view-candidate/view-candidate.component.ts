@@ -25,10 +25,7 @@ export class ViewCandidateComponent implements OnInit {
   }
 
   deleteCandidate(id:number) {
-    let confirmation=window.confirm("Are you sure you want to delete this candidate?");
-    if(confirmation) {
-      this.backendService.deleteCandidate(id).subscribe(()=>this.getData())
-    }
+    this.backendService.deleteCandidate(id).subscribe(()=>this.getData());
   }
 
   viewDetailsCandidate(id:number) {

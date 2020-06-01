@@ -19,6 +19,7 @@ public class CandidateRowMapper implements RowMapper <Candidate> {
 		candidate.setLocation(rs.getString("location"));
 		candidate.setSkills(rs.getString("skills"));
 		candidate.setJoiningDate(rs.getString("joiningDate"));
+		candidate.setFeedback(rs.getString("feedback"));
 		return candidate;
 	}
 }

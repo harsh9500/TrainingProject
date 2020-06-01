@@ -36,6 +36,7 @@ export class UpdateCandidateComponent implements OnInit {
     console.log(this.candidate);
     this.backendService.updateCandidate(this.id,this.candidate)
     .subscribe(()=>{
+      this.candidate=new Candidate();
       this.router.navigateByUrl('/candidate/view');
     });
   }

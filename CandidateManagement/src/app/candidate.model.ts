@@ -9,4 +9,5 @@ export class Candidate
 	public location:String;
 	public skills:String;
 	public joiningDate:String;
+	public feedback:String;
 }

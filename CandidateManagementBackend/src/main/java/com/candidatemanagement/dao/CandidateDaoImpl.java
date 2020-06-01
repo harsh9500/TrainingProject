@@ -71,8 +71,8 @@ public class CandidateDaoImpl implements CandidateDao {
 
     @Override
     public int updateCandidate(Candidate candidate, long id) {
-        int [] types= {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.LONGVARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
-    	return jdbcTemplate.update("update candidate " + " set name = ?, email = ?, institute=?, contact=?, description=?, location=?,skills=?, joiningDate=? "+" where id = ?",
+        int [] types= {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.LONGVARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
+    	return jdbcTemplate.update("update candidate " + " set name = ?, email = ?, institute=?, contact=?, description=?, location=?,skills=?, joiningDate=?, feedback=? "+" where id = ?",
             new Object[] {
             		candidate.getName(),
             		candidate.getEmail(),
@@ -82,6 +82,7 @@ public class CandidateDaoImpl implements CandidateDao {
             		candidate.getLocation(),
             		candidate.getSkills(),
             		candidate.getJoiningDate(),
+            		candidate.getFeedback(),
             		id},types);
     }
     

@@ -12,11 +12,13 @@ import { Candidate } from '../candidate.model';
 export class AddCandidateComponent implements OnInit {
 
   candidate:Candidate;
+  success:boolean;
   addCandidateForm: FormGroup;
   constructor(private backendService:BackendService, private router:Router) { }
 
   ngOnInit(): void {
 
+    this.success=false;
     this.candidate=new Candidate();
 
     this.addCandidateForm = new FormGroup({
@@ -62,7 +64,8 @@ export class AddCandidateComponent implements OnInit {
     console.log(this.addCandidateForm.value);
     this.backendService.addCandidate(this.candidate)
     .subscribe(()=>{
-      this.router.navigateByUrl('/candidate/view');
+      this.success=true;
+      // this.router.navigateByUrl('/candidate/view');
       this
     });
   }
