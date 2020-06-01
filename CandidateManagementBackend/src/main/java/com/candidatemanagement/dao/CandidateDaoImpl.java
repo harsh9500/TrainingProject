@@ -16,8 +16,6 @@ import org.springframework.stereotype.Repository;
 
 import com.candidatemanagement.model.Candidate;
 import com.candidatemanagement.model.CandidateRowMapper;
-import com.candidatemanagement.model.Skill;
-import com.candidatemanagement.model.SkillRowMapper;
 
 @Repository
 public class CandidateDaoImpl implements CandidateDao {
@@ -91,9 +89,6 @@ public class CandidateDaoImpl implements CandidateDao {
         return jdbcTemplate.update("delete from candidate where id=?", id);
     }
 
-	@Override
-	public List<Skill> getAllSkills() {
-		return jdbcTemplate.query("select * from skill", new SkillRowMapper());
-	}
+	
 
 }

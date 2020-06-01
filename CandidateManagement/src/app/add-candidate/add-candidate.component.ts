@@ -35,7 +35,7 @@ export class AddCandidateComponent implements OnInit {
       institute: new FormControl(null, [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(80),
         Validators.pattern("^[A-Z a-z]+$")
       ]),
       contact: new FormControl(null, [

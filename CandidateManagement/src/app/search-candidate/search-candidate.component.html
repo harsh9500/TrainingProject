@@ -1,3 +1,62 @@
 <app-sidebar></app-sidebar>
 <app-navbar></app-navbar>
-<h1 style="text-align: center;">Search</h1>
+<!-- <h1 style="text-align: center;">Search</h1> -->
+<br>
+
+<div class="container">
+    <h3>Select your criterion:</h3>
+    <div class="row">
+        <div class="col-sm-3">
+            <select #criterion id="criterion" class="form-control" (change)="onCriteriaSelection(criterion.value)">
+                <option value="location" selected>Location</option>
+                <option value="institute">Institute</option>
+                <option value="skills">Skills</option>
+            </select>
+        </div>
+        
+        <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term" name="searchBox" required>
+        </div>
+        
+        <button class="btn btn-default" (click)="onSearch()">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            Search
+        </button>
+        
+        
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 10px;">
+    <h1 *ngIf="noresults" style="text-align: center;">No results found for your query!!</h1>
+    <table *ngIf="candidates.length" class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Institute</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Description</th>
+            <th scope="col">Location</th>
+            <th scope="col">Skills</th>
+            <th scope="col">Joining Date</th>
+            <th scope="col">Feedback</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let candidate of candidates">
+            <th scope="row">{{candidate.id}}</th>
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.email}}</td>
+            <td>{{candidate.institute}}</td>
+            <td>{{candidate.contact}}</td>
+            <td>{{candidate.description}}</td>
+            <td>{{candidate.location}}</td>
+            <td>{{candidate.skills}}</td>
+            <td>{{candidate.joiningDate}}</td>
+            <td>{{candidate.feedback}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
