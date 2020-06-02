@@ -6,14 +6,13 @@
             <a href="/candidate/view" class="alert-link">Added Candidate! Click here to view all candidates</a>
         </div>
     </div>
-    
         
-    <div class="col-sm-12 col-md-7">
-        <h3>Add Candidate Details</h3>
-        <br>
+    <div>
+        <h3 style="text-align: center;">Add Candidate Details</h3>
+        <hr style="background:lightgrey; height:1px">
         <form class="form-horizontal" role="form" [formGroup]="addCandidateForm" (ngSubmit)="onSubmit()">
             
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="name">
                     Name:
                 </label>
@@ -27,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="emailId">
                     Email:
                 </label>
@@ -41,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="institute">
                     Institute:
                 </label>
@@ -55,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="contact">
                     Contact:
                 </label>
@@ -69,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="description">
                     Job Description:
                 </label>
@@ -83,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="location">
                     Location:
                 </label>
@@ -99,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="skills">
                     Skills:
                 </label>
@@ -113,7 +112,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="joiningDate">
                     Joining Date:
                 </label>
@@ -126,14 +125,15 @@
                 </div>
             </div>
 
-            <label class="col-sm-12 text-danger" *ngIf="!addCandidateForm.valid" style="text-align: center;">
+            <label class="col-sm-12 text-danger" *ngIf="!addCandidateForm.valid" style="text-align: center; font-size: medium;">
                 You need to enter valid details in order to submit the form
             </label>
-            <br><br *ngIf="!addCandidateForm.valid">
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
+
+            <div class="form-group col-md-12">
+                <br>
+                <div style="text-align: center;">
                     <button type="submit" [disabled]="!addCandidateForm.valid" class="btn btn-success">Add</button>
-                    <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Reset</button>
+                    <button type="reset" class="btn btn-danger" style="margin-left: 10px;" (click)="onReset()">Reset</button>
                 </div>
             </div>
         </form>

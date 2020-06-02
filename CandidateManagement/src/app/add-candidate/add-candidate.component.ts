@@ -65,9 +65,15 @@ export class AddCandidateComponent implements OnInit {
     this.backendService.addCandidate(this.candidate)
     .subscribe(()=>{
       this.success=true;
+      this.addCandidateForm.reset();
       // this.router.navigateByUrl('/candidate/view');
       this
     });
+  }
+
+  onReset() {
+    this.addCandidateForm.reset();
+    this.success=false;
   }
 
 
