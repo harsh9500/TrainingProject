@@ -16,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.candidatemanagement.model.Candidate;
 import com.candidatemanagement.service.CandidateService;
-import com.candidatemanagement.service.CandidateServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CandidateController {
 
 	@Autowired
-	CandidateService candidateService = new CandidateServiceImpl();
+	CandidateService candidateService;
 	
 	@GetMapping("/candidates")
 	public List<Candidate> getAllCandidates() {

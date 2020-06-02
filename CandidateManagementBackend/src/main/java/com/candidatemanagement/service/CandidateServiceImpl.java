@@ -9,14 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.candidatemanagement.dao.CandidateDao;
-import com.candidatemanagement.dao.CandidateDaoImpl;
 import com.candidatemanagement.model.Candidate;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
 
 	@Autowired
-	CandidateDao candidateDao = new CandidateDaoImpl();
+	CandidateDao candidateDao;
 	
 	@Override
 	public List<Candidate> getAllCandidates() {

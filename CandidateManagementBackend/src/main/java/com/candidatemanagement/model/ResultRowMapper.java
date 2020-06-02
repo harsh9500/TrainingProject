@@ -5,10 +5,13 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class ResultRowMapper implements RowMapper <String> {
+public class ResultRowMapper implements RowMapper <Result> {
 
 	@Override
-	public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-		return rs.getString(1);
+	public Result mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Result result = new Result();
+		result.setName(rs.getString("name"));
+		result.setValue(rs.getString("value"));
+		return result;
 	}
 }
