@@ -11,6 +11,7 @@ export class BackendService {
 
   private baseUrl:string="http://localhost:8082/candidates";
   private searchUrl:string="http://localhost:8082/search";
+  private trendsUrl:string="http://localhost:8082/trends";
   constructor(private http:HttpClient) {}
 
   addCandidate(candidate:Candidate): Observable<any> {
@@ -35,6 +36,18 @@ export class BackendService {
 
   search(term: string, criterion: String): Observable<any> {
     return this.http.get(`${this.searchUrl}/${criterion}/${term}`);
+  }
+
+  getLocationTrends(): Observable<any> {
+    return this.http.get(`${this.trendsUrl}/location`);
+  }
+
+  getInstituteTrends(): Observable<any> {
+    return this.http.get(`${this.trendsUrl}/institute`);
+  }
+
+  getDescriptionTrends(): Observable<any> {
+    return this.http.get(`${this.trendsUrl}/description`);
   }
 
 }
