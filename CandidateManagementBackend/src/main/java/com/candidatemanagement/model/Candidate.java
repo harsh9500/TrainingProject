@@ -16,10 +16,9 @@ public class Candidate {
 	
 	public Candidate() {}
 
-	public Candidate(long id, String name, String email, String institute, long contact, String description,
+	public Candidate(String name, String email, String institute, long contact, String description,
 			String location, String skills, String joiningDate) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.institute = institute;
@@ -109,10 +108,12 @@ public class Candidate {
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Candidate [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "Candidate [id=" + id + ", name=" + name + ", email=" + email + ", institute=" + institute + ", contact="
+				+ contact + ", description=" + description + ", location=" + location + ", skills=" + skills
+				+ ", joiningDate=" + joiningDate + ", feedback=" + feedback + "]";
 	}
 	
 	
