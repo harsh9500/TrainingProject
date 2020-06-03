@@ -26,7 +26,7 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<?> getCandidateById(long id) {
 		Optional <Candidate> candidate = candidateDao.getCandidateById(id);
-		if(candidate!=null) {
+		if(candidate.isPresent()) {
 			return new ResponseEntity<Candidate>(candidate.get(),HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("User not found",HttpStatus.NOT_FOUND);
@@ -35,7 +35,7 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<String> addCandidate(Candidate candidate) {
 		Optional <Candidate> lookupCandidate = candidateDao.getCandidateById(candidate.getId());
-		if(lookupCandidate!=null) {
+		if(lookupCandidate.isPresent()) {
 			return new ResponseEntity<String>("Duplicate Entry",HttpStatus.IM_USED);
 		}
 		candidateDao.addCandidate(candidate);
@@ -47,7 +47,7 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<?> updateCandidate(Candidate candidate, long id) {
 		Optional <Candidate> lookupCandidate = candidateDao.getCandidateById(id);
-		if(lookupCandidate==null) {
+		if(!lookupCandidate.isPresent()) {
 			return new ResponseEntity<String>("User does not exist",HttpStatus.NOT_FOUND);
 		}
 		candidateDao.updateCandidate(candidate,id);
@@ -59,7 +59,7 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public ResponseEntity<?> deleteCandidate(long id) {
 		Optional <Candidate> lookupCandidate = candidateDao.getCandidateById(id);
-		if(lookupCandidate==null) {
+		if(!lookupCandidate.isPresent()) {
 			return new ResponseEntity<String>("User does not exist",HttpStatus.NOT_FOUND);
 		}
 		candidateDao.deleteCandidate(id);
