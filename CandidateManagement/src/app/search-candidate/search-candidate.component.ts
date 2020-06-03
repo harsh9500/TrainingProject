@@ -25,11 +25,13 @@ export class SearchCandidateComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.term);
     this.backendService.search(this.term,this.criterion)
     .subscribe(
       (list)=>{
-        this.candidates=list
+        list.forEach((candidate)=>{
+          candidate.skills=candidate.skills.split(/[ ,]+/).join(', ');
+        })
+        this.candidates=list;
         if(!list.length)
           this.noresults=true;
         else

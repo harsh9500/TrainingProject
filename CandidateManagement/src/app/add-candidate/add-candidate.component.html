@@ -10,10 +10,13 @@
     <div>
         <h3 style="text-align: center;">Add Candidate Details</h3>
         <hr style="background:lightgrey; height:1px">
+        <div class="col-sm-offset-1" style="color: red;">Fields marked as * are required</div>
+        <br>
         <form class="form-horizontal" role="form" [formGroup]="addCandidateForm" (ngSubmit)="onSubmit()">
             
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="name">
+                    <span class="text-danger">*</span>
                     Name:
                 </label>
                 <div class="col-sm-8">
@@ -23,11 +26,28 @@
                     class="form-control"
                     formControlName="name"
                     >
+                    <span *ngIf="name.invalid && (name.dirty || name.touched)" style="color: red;">
+
+                        <span *ngIf="name.errors.required">
+                            Name is required.
+                        </span>
+                        <span *ngIf="name.errors.minlength">
+                            Name must be at least 2 characters long.
+                        </span>
+                        <span *ngIf="name.errors.maxlength">
+                            Name must not be more than 40 characters long.
+                        </span>
+                        <span *ngIf="name.errors.pattern">
+                            Name should contain letters only.
+                        </span>
+                    </span>
                 </div>
+                
             </div>
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="emailId">
+                    <span class="text-danger">*</span>
                     Email:
                 </label>
                 <div class="col-sm-8">
@@ -37,11 +57,29 @@
                     class="form-control"
                     formControlName="email"
                     >
+
+                    <span *ngIf="(!(email.dirty || email.touched) || email.valid) && name.invalid && (name.dirty || name.touched)">
+                        <span *ngIf="name.errors.required"><br></span>
+                        <span *ngIf="name.errors.minlength"><br></span>
+                        <span *ngIf="name.errors.maxlength"><br></span>
+                        <span *ngIf="name.errors.pattern"><br></span>
+                    </span>
+
+                    <span *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red;">
+
+                        <span *ngIf="email.errors.required">
+                            Email is required.
+                        </span>
+                        <span *ngIf="email.errors.email">
+                            Enter a valid email id
+                        </span>
+                    </span>
                 </div>
             </div>
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="institute">
+                    <span class="text-danger">*</span>
                     Institute:
                 </label>
                 <div class="col-sm-8">
@@ -51,11 +89,27 @@
                     class="form-control"
                     formControlName="institute"
                     >
+                    <span *ngIf="institute.invalid && (institute.dirty || institute.touched)" style="color: red;">
+
+                        <span *ngIf="institute.errors.required">
+                            Institute is required.
+                        </span>
+                        <span *ngIf="institute.errors.minlength">
+                            Institute must be at least 4 characters long.
+                        </span>
+                        <span *ngIf="institute.errors.maxlength">
+                            Institute must not be more than 80 characters long.
+                        </span>
+                        <span *ngIf="institute.errors.pattern">
+                            Institute should contain letters only.
+                        </span>
+                    </span>
                 </div>
             </div>
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="contact">
+                    <span class="text-danger">*</span>
                     Contact:
                 </label>
                 <div class="col-sm-8">
@@ -65,11 +119,28 @@
                     class="form-control"
                     formControlName="contact"
                     >
+                    <span *ngIf="(!(contact.dirty || contact.touched) || contact.valid) && institute.invalid && (institute.dirty || institute.touched)">
+
+                        <span *ngIf="institute.errors.required"><br></span>
+                        <span *ngIf="institute.errors.minlength"><br></span>
+                        <span *ngIf="institute.errors.maxlength"><br></span>
+                        <span *ngIf="institute.errors.pattern"><br></span>
+                    </span>
+                    <span *ngIf="contact.invalid && (contact.dirty || contact.touched)" style="color: red;">
+
+                        <span *ngIf="contact.errors.required">
+                            Contact is required.
+                        </span>
+                        <span *ngIf="contact.errors.pattern">
+                            Contact must contain 10 digits
+                        </span>
+                    </span>
                 </div>
             </div>
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="description">
+                    <span class="text-danger">*</span>
                     Job Description:
                 </label>
                 <div class="col-sm-8">
@@ -79,6 +150,21 @@
                     class="form-control"
                     formControlName="description"
                     >
+                    <span *ngIf="description.invalid && (description.dirty || description.touched)" style="color: red;">
+
+                        <span *ngIf="description.errors.required">
+                            Description is required.
+                        </span>
+                        <span *ngIf="description.errors.minlength">
+                            Description must be at least 2 characters long.
+                        </span>
+                        <span *ngIf="description.errors.maxlength">
+                            Description must not be more than 40 characters long.
+                        </span>
+                        <span *ngIf="description.errors.pattern">
+                            Description should contain letters only.
+                        </span>
+                    </span>
                 </div>
             </div>
 
@@ -95,6 +181,13 @@
                         <option value="Delhi">Delhi</option>
                         <option value="Gurugram">Gurugram</option>
                     </select>
+                    <span *ngIf="description.invalid && (description.dirty || description.touched)">
+
+                        <span *ngIf="description.errors.required"><br></span>
+                        <span *ngIf="description.errors.minlength"><br></span>
+                        <span *ngIf="description.errors.maxlength"><br></span>
+                        <span *ngIf="description.errors.pattern"><br></span>
+                    </span>
                 </div>
             </div>
 
@@ -114,6 +207,7 @@
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="joiningDate">
+                    <span class="text-danger">*</span>
                     Joining Date:
                 </label>
                 <div class="col-sm-8">
@@ -121,7 +215,14 @@
                     type="date"
                     class="form-control"
                     id="joiningDate"
-                    formControlName="joiningDate">
+                    formControlName="joiningDate"
+                    >
+                    <span *ngIf="joiningDate.invalid && (joiningDate.dirty || joiningDate.touched)" style="color: red;">
+
+                        <span *ngIf="joiningDate.errors.required">
+                            Joining Date is required.
+                        </span>
+                    </span>
                 </div>
             </div>
 

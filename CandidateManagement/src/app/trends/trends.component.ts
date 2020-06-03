@@ -13,7 +13,7 @@ export class TrendsComponent implements OnInit {
   instituteData: any;
 
   view: any[] = [600, 400];
-  viewCenter: any[] = [1200, 400];
+  viewCenter: any[] = [1200, 500];
 
   showXAxis = true;
   showYAxis = true;

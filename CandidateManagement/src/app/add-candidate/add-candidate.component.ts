@@ -57,6 +57,15 @@ export class AddCandidateComponent implements OnInit {
     });
   }
 
+  get name() { return this.addCandidateForm.get('name'); }
+  get email() { return this.addCandidateForm.get('email'); }
+  get institute() { return this.addCandidateForm.get('institute'); }
+  get contact() { return this.addCandidateForm.get('contact'); }
+  get description() { return this.addCandidateForm.get('description'); }
+  get location() { return this.addCandidateForm.get('location'); }
+  get joiningDate() { return this.addCandidateForm.get('joiningDate'); }
+
+
 
   onSubmit() {
 

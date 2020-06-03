@@ -3,7 +3,7 @@
 <!-- <h1 style="text-align: center;">Search</h1> -->
 <br>
 
-<div class="container">
+<div class="container" style="margin-left: 10px;">
     <h3>Select your criterion:</h3>
     <div class="row">
         <div class="col-sm-3">
@@ -27,7 +27,8 @@
     </div>
 </div>
 
-<div class="container-fluid" style="margin-top: 10px;">
+<hr style="background:lightgrey;">
+<div class="container-fluid">
     <h1 *ngIf="noresults" style="text-align: center;">No results found for your query!!</h1>
     <table *ngIf="candidates.length" class="table table-striped">
         <thead>
@@ -40,7 +41,7 @@
             <th scope="col">Description</th>
             <th scope="col">Location</th>
             <th scope="col">Skills</th>
-            <th scope="col">Joining Date</th>
+            <th scope="col">Joining Date<br>(YYYY-MM-DD)</th>
             <th scope="col">Feedback</th>
         </tr>
         </thead>

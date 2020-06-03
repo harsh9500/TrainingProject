@@ -3,15 +3,15 @@
 <h1 style="text-align: center;">Trends</h1>
 <div class="container-fluid" style="text-align:center">
     
-    <div class="col-md-6">
-        <div class="row">
+    <div class="col-md-12">
+        <div>
             <h3>
                 Trends across Locations
             </h3>
         </div>
-        <div class="row">
+        <div class="col-sm-offset-1">
             <ngx-charts-bar-vertical
-                [view]="view"
+                [view]="viewCenter"
                 [results]="locationData"
                 [scheme]="colorScheme"
                 [gradient]="gradient"
@@ -28,15 +28,15 @@
         </div>
     </div>
         
-    <div class="col-md-6">
-        <div class="row">
+    <div class="col-md-12">
+        <div>
             <h3>
                 Trends across Institutes
             </h3>
         </div>
-        <div class="row">
+        <div>
             <ngx-charts-pie-chart
-                [view]="view"
+                [view]="viewCenter"
                 [scheme]="colorScheme"
                 [results]="instituteData"
                 [gradient]="gradient"
