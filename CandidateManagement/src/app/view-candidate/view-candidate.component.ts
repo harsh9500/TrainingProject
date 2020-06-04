@@ -10,6 +10,7 @@ import { Candidate } from '../candidate.model';
 })
 export class ViewCandidateComponent implements OnInit {
 
+  p: number = 1;
   candidates:Candidate[]=[];
   constructor(private backendService:BackendService, private router:Router) { }
 

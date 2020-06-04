@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -54,7 +55,8 @@ export function provideConfig() {
     HttpClientModule,
     SocialLoginModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: AuthServiceConfig,

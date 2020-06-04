@@ -9,6 +9,7 @@ import { Candidate } from '../candidate.model';
 })
 export class SearchCandidateComponent implements OnInit {
 
+  p: number = 1;
   candidates:Candidate[]=[];
   criterion:string='location';
   term:string='';

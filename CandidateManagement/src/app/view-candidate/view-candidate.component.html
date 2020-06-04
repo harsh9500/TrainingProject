@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let candidate of candidates">
+        <tr *ngFor="let candidate of candidates | paginate: { id:'view', itemsPerPage: 10, currentPage: p }">
             <th scope="row">{{candidate.id}}</th>
             <td>{{candidate.name}}</td>
             <td>{{candidate.email}}</td>
@@ -65,4 +65,5 @@
         </tr>
         </tbody>
     </table>
+    <pagination-controls id="view" (pageChange)="p = $event" autoHide="true"></pagination-controls>
 </div>
