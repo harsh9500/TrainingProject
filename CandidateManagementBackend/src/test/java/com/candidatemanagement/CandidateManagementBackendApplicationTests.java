@@ -65,7 +65,7 @@ class CandidateManagementBackendApplicationTests {
 	
 	@Test
 	public void addCandidateTest() {
-		Candidate candidate = new Candidate("Harsh","harsh@gmail.com","DJSCE",1234567890,"SDE","Mumbai","C++ Java","2020-05-11");
+		Candidate candidate = new Candidate("Harsh","harsh123@hotmail.com","DJSCE",1234567890,"SDE","Mumbai","C++ Java","2020-05-11");
 		when(candidateDao.addCandidate(candidate)).thenReturn(true);
 		ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
 		assertEquals(response,candidateService.addCandidate(candidate));

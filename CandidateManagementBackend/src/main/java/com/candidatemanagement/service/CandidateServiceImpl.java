@@ -41,11 +41,16 @@ public class CandidateServiceImpl implements CandidateService {
 	
 	@Override
 	public ResponseEntity<String> addCandidate(Candidate candidate) {
-//		Optional <Candidate> lookupCandidate = candidateDao.getCandidateById(candidate.getId());
-//		if(lookupCandidate!=null && lookupCandidate.isPresent()) {
-//			logger.error("Candidate with ID "+candidate.getId()+" already exists");
-//			return new ResponseEntity<String>("Duplicate Entry",HttpStatus.IM_USED);
-//		}
+		Optional <Candidate> lookupCandidateByEmail = candidateDao.getCandidateByEmail(candidate.getEmail());
+		if(lookupCandidateByEmail!=null && lookupCandidateByEmail.isPresent()) {
+			logger.error("Candidate with Email "+candidate.getEmail()+" already exists");
+			return new ResponseEntity<String>("Email ID already exists",HttpStatus.IM_USED);
+		}
+		Optional <Candidate> lookupCandidateByContact = candidateDao.getCandidateByContact(candidate.getContact());
+		if(lookupCandidateByContact!=null && lookupCandidateByContact.isPresent()) {
+			logger.error("Candidate with Contact "+candidate.getContact()+" already exists");
+			return new ResponseEntity<String>("Contact already exists",HttpStatus.IM_USED);
+		}
 		candidateDao.addCandidate(candidate);
 		logger.info("Adding new candidate");
 		return ResponseEntity.status(HttpStatus.CREATED).build();

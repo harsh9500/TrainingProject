@@ -6,6 +6,12 @@
             <a href="/candidate/view" class="alert-link">Added Candidate! Click here to view all candidates</a>
         </div>
     </div>
+
+    <div class="row" *ngIf="failure">
+        <div class="alert alert-danger" role="alert">
+            <p>Error! {{error}}</p>
+        </div>
+    </div>
         
     <div>
         <h3 style="text-align: center;">Add Candidate Details</h3>
@@ -170,6 +176,7 @@
 
             <div class="form-group col-md-6">
                 <label class="control-label col-sm-3" for="location">
+                    <span class="text-danger">*</span>
                     Location:
                 </label>
                 <div class="col-sm-8">
@@ -181,12 +188,18 @@
                         <option value="Delhi">Delhi</option>
                         <option value="Gurugram">Gurugram</option>
                     </select>
-                    <span *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <span *ngIf="(!(location.dirty || location.touched) || location.valid) && description.invalid && (description.dirty || description.touched)">
 
                         <span *ngIf="description.errors.required"><br></span>
                         <span *ngIf="description.errors.minlength"><br></span>
                         <span *ngIf="description.errors.maxlength"><br></span>
                         <span *ngIf="description.errors.pattern"><br></span>
+                    </span>
+                    <span *ngIf="location.invalid && (location.dirty || location.touched)" style="color: red;">
+
+                        <span *ngIf="location.errors.required">
+                            Location is required.
+                        </span>
                     </span>
                 </div>
             </div>

@@ -21,7 +21,8 @@ export class ViewCandidateComponent implements OnInit {
     this.backendService.getCandidateList()
     .subscribe((list)=>{
       list.forEach((candidate)=>{
-        candidate.skills=candidate.skills.split(/[ ,]+/).join(', ');
+        candidate.skills=candidate.skills!=null?candidate.skills.trim():candidate.skills
+        candidate.skills=candidate.skills!=null?candidate.skills.split(/[ ,]+/).join(', '):candidate.skills;
       })
       this.candidates=list;
     });

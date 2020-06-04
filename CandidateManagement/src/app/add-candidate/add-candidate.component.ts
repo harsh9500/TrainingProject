@@ -13,6 +13,8 @@ export class AddCandidateComponent implements OnInit {
 
   candidate:Candidate;
   success:boolean;
+  failure:boolean;
+  error:string;
   addCandidateForm: FormGroup;
   constructor(private backendService:BackendService, private router:Router) { }
 
@@ -72,17 +74,31 @@ export class AddCandidateComponent implements OnInit {
     this.candidate=this.addCandidateForm.value;
     console.log(this.addCandidateForm.value);
     this.backendService.addCandidate(this.candidate)
-    .subscribe(()=>{
+    .subscribe((response)=>{
+      console.log(response);
+      if(response!==null)
+        console.log("response is not null");
+      else
+        console.log("response is null");
       this.success=true;
+      this.failure=false;
       this.addCandidateForm.reset();
       // this.router.navigateByUrl('/candidate/view');
       this
-    });
+    },
+    (error)=>{
+      console.log(error.error.text)
+      this.success=false;
+      this.failure=true;
+      this.error=error.error.text;
+    }
+    )
   }
 
   onReset() {
     this.addCandidateForm.reset();
     this.success=false;
+    this.failure=false;
   }
 
 
