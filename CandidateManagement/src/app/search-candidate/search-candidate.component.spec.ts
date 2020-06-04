@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchCandidateComponent } from './search-candidate.component';
+import { BackendService } from '../backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SearchCandidateComponent', () => {
   let component: SearchCandidateComponent;
@@ -8,7 +10,9 @@ describe('SearchCandidateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchCandidateComponent ]
+      imports:[HttpClientModule],
+      declarations: [ SearchCandidateComponent ],
+      providers:[BackendService]
     })
     .compileComponents();
   }));

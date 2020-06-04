@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TrendsComponent } from './trends.component';
+import { BackendService } from '../backend.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('TrendsComponent', () => {
   let component: TrendsComponent;
@@ -8,7 +10,9 @@ describe('TrendsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrendsComponent ]
+      imports:[HttpClientModule],
+      declarations: [ TrendsComponent ],
+      providers:[BackendService]
     })
     .compileComponents();
   }));
