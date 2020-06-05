@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from '../backend.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Candidate } from '../candidate.model';
@@ -20,12 +19,10 @@ export class UpdateCandidateComponent implements OnInit {
     this.candidate = new Candidate();
     
     this.id=this.route.snapshot.params['id'];
-    console.log(this.id);
 
     this.backendService.getCandidate(this.id).subscribe(
       (candidate)=>{
         this.candidate=candidate;
-        console.log(this.candidate);
       }
     )
 
@@ -33,7 +30,6 @@ export class UpdateCandidateComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.candidate);
     this.backendService.updateCandidate(this.id,this.candidate)
     .subscribe(()=>{
       this.candidate=new Candidate();

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from '../backend.service';
-import { Router } from '@angular/router';
 import { Candidate } from '../candidate.model';
 
 @Component({
@@ -16,7 +15,7 @@ export class AddCandidateComponent implements OnInit {
   failure:boolean;
   error:string;
   addCandidateForm: FormGroup;
-  constructor(private backendService:BackendService, private router:Router) { }
+  constructor(private backendService:BackendService) { }
 
   ngOnInit(): void {
 
@@ -74,20 +73,12 @@ export class AddCandidateComponent implements OnInit {
     this.candidate=this.addCandidateForm.value;
     console.log(this.addCandidateForm.value);
     this.backendService.addCandidate(this.candidate)
-    .subscribe((response)=>{
-      console.log(response);
-      if(response!==null)
-        console.log("response is not null");
-      else
-        console.log("response is null");
+    .subscribe(()=>{
       this.success=true;
       this.failure=false;
       this.addCandidateForm.reset();
-      // this.router.navigateByUrl('/candidate/view');
-      this
     },
     (error)=>{
-      console.log(error.error.text)
       this.success=false;
       this.failure=true;
       this.error=error.error.text;

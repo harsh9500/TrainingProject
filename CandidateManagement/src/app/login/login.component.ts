@@ -1,5 +1,4 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle() {
-    console.log("Hitting Google API");
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
     .then(
       (response)=>{
@@ -27,13 +25,11 @@ export class LoginComponent implements OnInit {
         .subscribe((oAuthResponse)=>{
           if(oAuthResponse['hd'] && oAuthResponse['hd']==="accoliteindia.com")
           {
-            console.log("Successful Sign In");
             localStorage.setItem('token', response.idToken); 
             this.router.navigateByUrl('/dashboard');
           }
           else
           {
-            console.log("Not an Accolite email");
             alert("Please select an Accolite India email ID");
           }
         });
@@ -43,6 +39,5 @@ export class LoginComponent implements OnInit {
     
   }
 
-  
 
 }

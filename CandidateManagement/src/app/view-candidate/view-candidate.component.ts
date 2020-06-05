@@ -37,7 +37,4 @@ export class ViewCandidateComponent implements OnInit {
     this.router.navigate(['candidate/details',id])
   }
 
-  pageChanged(event:any) {
-    this.getData()
-  }
 }

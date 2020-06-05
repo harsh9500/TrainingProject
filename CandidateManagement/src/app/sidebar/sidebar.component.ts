@@ -27,11 +27,9 @@ export class SidebarComponent implements OnInit {
 
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
-    // document.getElementById("content").style.marginLeft= "250px";
   }
 
   closeNav() {
-    // document.getElementById("content").style.marginLeft= "0";
     document.getElementById("mySidenav").style.width = "0px";
    
   }
@@ -39,7 +37,6 @@ export class SidebarComponent implements OnInit {
   signOut(){
     this.authService.signOut().then(
       ()=>{
-        console.log("Successful Sign out");
         localStorage.removeItem('token'); 
         this.router.navigateByUrl('/login');
     },
