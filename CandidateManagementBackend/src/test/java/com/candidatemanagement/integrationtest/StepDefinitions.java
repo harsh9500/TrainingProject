@@ -1,4 +1,4 @@
-package com.candidatemanagement;
+package com.candidatemanagement.integrationtest;
 
 import static org.junit.Assert.assertNotNull;
 import static org.assertj.core.api.Assertions.assertThat;

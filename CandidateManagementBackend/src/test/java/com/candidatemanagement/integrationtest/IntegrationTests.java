@@ -1,4 +1,4 @@
-package com.candidatemanagement;
+package com.candidatemanagement.integrationtest;
 
 import org.junit.runner.RunWith;
 
