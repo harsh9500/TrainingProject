@@ -74,7 +74,7 @@ public class CandidateDaoImpl implements CandidateDao {
 				}});
 		} catch (DataAccessException e) {
 			e.printStackTrace();
-			return false;
+			return true;
 		}
     	
     }
